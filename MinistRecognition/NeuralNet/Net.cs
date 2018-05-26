@@ -53,7 +53,7 @@ namespace NeuralNetwork
                     Feedforward(ds);
 
                     stats.ChangeText("Epoca: " + (i + 1).ToString() + "\n" +
-                        "Muestra: " + j++ + "\n " +
+                        "Muestra: " + j++ + "\n" +
                         "Error: " + Backpropagation(ds).ToString());
 
                     stats.Refresh();
