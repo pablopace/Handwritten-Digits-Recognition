@@ -13,7 +13,7 @@ namespace MinistRecognition
 {
     public partial class Form1 : Form
     {
-        Net net = new Net(0.01, new int[] { 784, 500, 10 });
+        Net net = new Net(3, new int[] { 784, 30, 10 });
 
         MinistReader testFileReader = new MinistReader(MinistReader.Modo.Test);
         //MinistReader trainFileReader = new MinistReader(MinistReader.Modo.Train); // lo abro abajo por ahora 
@@ -99,7 +99,7 @@ namespace MinistRecognition
             {
                 trainFileReader = new MinistReader(MinistReader.Modo.Train);
 
-                for (int c = 1; c < trainFileReader.numImages; c++) //trainFileReader.numImages
+                for (int c = 1; c < 60000; c++) //trainFileReader.numImages
                 {
                     di = trainFileReader.NextDigit();
 
@@ -167,47 +167,7 @@ namespace MinistRecognition
         }
 
 
-        private void DibujarNumero2(PictureBox box, Label lab, double[] inputs)
-        {
-            int tam = 10;
-            int pixels = inputs.Length;
-            int index = 0;
-
-            Bitmap bmp = new Bitmap(box.Width, box.Height);
-            Graphics g = Graphics.FromImage(bmp);
-            Pen p = new Pen(Color.Black);
-
-            int x = 0, y = 0;
-
-            for (int i = 0; i < 28; i++)
-            {
-                for (int j = 0; j < 28; j++)
-                {
-                    index = 28 * i + j;
-                    int v = (int)255 - (int)inputs[index];
-                    Color customColor = Color.FromArgb(v, v, v);
-
-                    if (v == 255)
-                        customColor = Color.FromArgb(102, 255, 51);
-                    if (index % 28 == 0)
-                        customColor = Color.FromArgb(153, 102, 51);
-
-                    SolidBrush customBrush = new SolidBrush(customColor);
-
-                    g.FillRectangle(customBrush, x, y, tam, tam);
-                    g.DrawRectangle(p, x, y, tam, tam);
-
-                    x += tam;
-                }
-                x = 0;
-                y += tam;
-            }
-
-            lab.Text = "";
-            pictureBox1.Image = bmp;
-            pictureBox1.Update();
-        }
-
+       
 
 
     }

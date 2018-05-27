@@ -15,7 +15,7 @@ namespace NeuralNetwork
 
         public Dentrite(Neuron input, Neuron output)
         {
-            weight = random.NextDouble() * (1 - (-1)) + (-1);
+            weight = random.NextDouble() * (0.3 - (-0.3)) + (-0.3);
             inputNeuron = input;
             outputNeuron = output;
         }

@@ -26,7 +26,7 @@ namespace NeuralNetwork
         public Neuron(Layer anterior) : this()
         {
             dentritas = new List<Dentrite>();
-            bias = random.NextDouble() * (1 - (-1)) + (-1);
+            bias = random.NextDouble() * (0.3 - (-0.3)) + (-0.3);
 
             foreach (Neuron n in anterior.neuronas)
             {
