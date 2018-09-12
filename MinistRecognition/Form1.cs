@@ -8,14 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NeuralNetwork;
-using NNmatrix;
 
 namespace MinistRecognition
 {
     public partial class Form1 : Form
     {
         Net net = new Net(0.4, new int[] { 784, 30, 10 });
-        //NNmatrix.NeuralNetwork network = new NNmatrix.NeuralNetwork(784, 100, 10, 0.3);
 
         MinistReader testFileReader = new MinistReader(MinistReader.Modo.Test);
         //MinistReader trainFileReader = new MinistReader(MinistReader.Modo.Train); // lo abro abajo por ahora 
@@ -83,15 +81,10 @@ namespace MinistRecognition
 
 
             List<Neuron> results = net.Test(new NeuralNetwork.DataSet(inputs, outputs));
-            //var response = network.Query(inputs);
 
             richTextBox1.Text = "";
             int k = 0;
             results.ForEach(n => richTextBox1.Text = richTextBox1.Text + (k++).ToString() + ". " + n.a.ToString("0.0000000000") + "\n");
-            //foreach (double n in response)
-            //{
-            //    richTextBox1.Text += (k++).ToString() + ". " + n.ToString() + "\n";
-            //}
 
             DibujarNumero(pictureBox1, label1, di);
 
@@ -135,7 +128,6 @@ namespace MinistRecognition
                     //richTextBox1.Update();
 
                     net.Train(new NeuralNetwork.DataSet(inputs, outputs), c, e);
-                    //network.Train(inputs,outputs);
                 }
 
                 trainFileReader.Close();

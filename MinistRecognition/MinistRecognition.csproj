@@ -64,8 +64,6 @@
     <Compile Include="NeuralNet\FormStats.Designer.cs">
       <DependentUpon>FormStats.cs</DependentUpon>
     </Compile>
-    <Compile Include="NNmatrix\Matrix.cs" />
-    <Compile Include="NNmatrix\NeuralNetwork.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
