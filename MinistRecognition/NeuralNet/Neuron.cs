@@ -52,7 +52,7 @@ namespace NeuralNetwork
 
         public void Delta()
         {
-            delta = outputDentrites.Sum(d => d.weight * d.outputNeuron.delta)* Formulas.SigmoidDx(a);
+            delta = outputDentrites.Sum(d => d.weight * d.outputNeuron.delta) * Formulas.SigmoidDx(a);
         }
 
         public void Update(double learningRate)
@@ -63,7 +63,7 @@ namespace NeuralNetwork
 
         public override string ToString()
         {
-            return "Neurona [a="+a.ToString("0.0000000000") +" delta="+delta+" err="+error+"]";
+            return "Neurona [a=" + a.ToString("0.0000000000") + " delta=" + delta + " err=" + error + "]";
         }
     }
 }

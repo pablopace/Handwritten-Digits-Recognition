@@ -16,7 +16,7 @@ namespace MinistRecognition
         public enum Modo { Test, Train };
         string labelsFile;
         string imagesFile;
-        private static string filedir = System.IO.Path.GetFullPath(@"D:\VisualStudioProjects\MnistFiles\");
+        private static string filedir = System.IO.Path.GetFullPath(@"D:\VisualStudioProjects\Neural Nets\MnistFiles\");
 
         int magic1;
         public int numImages;
@@ -80,19 +80,21 @@ namespace MinistRecognition
             for (int i = 0; i < pixels.Length; ++i)
                 pixels[i] = new byte[28];*/
 
-            byte[][] pixels = new byte[28][];
+            double[][] pixels = new double[28][];
 
             for (int i = 0; i < 28; ++i)
             {
-                pixels[i] = new byte[28];
+                pixels[i] = new double[28];
 
                 for (int j = 0; j < 28; ++j)
                 {
-                    pixels[i][j] = brImages.ReadByte();
+                    byte t = brImages.ReadByte();
+                    double tt = t / 255f;
+                    pixels[i][j] = tt;
                 }
             }
 
-            byte lbl = brLabels.ReadByte();
+            int lbl = brLabels.ReadByte();
 
             DigitImage dImage = new DigitImage(pixels, lbl);
             return dImage;
@@ -114,14 +116,14 @@ namespace MinistRecognition
 
     public class DigitImage
     {
-        public byte[][] pixels;
-        public byte label;
+        public double[][] pixels;
+        public int label;
 
-        public DigitImage(byte[][] pixels, byte label)
+        public DigitImage(double[][] pixels, int label)
         {
-            this.pixels = new byte[28][];
+            this.pixels = new double[28][];
             for (int i = 0; i < this.pixels.Length; ++i)
-                this.pixels[i] = new byte[28];
+                this.pixels[i] = new double[28];
 
             for (int i = 0; i < 28; ++i)
                 for (int j = 0; j < 28; ++j)
